@@ -1,0 +1,34 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %}
+    Add Post Page
+{% endblock %}
+{% block body %}
+    <nav class="navbar navbar-default">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Главная страница</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/addpost">Добавить пост</a>
+        </li>
+      </ul>
+    </nav>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+          <b>{{ form.username.label }}</b><br>
+          {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+            <p>
+          <b>{{ form.post.label }}</b><br>
+          {{ form.post(cols="35", rows="20") }}<br>
+                {% for error in form.post.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
